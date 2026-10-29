@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Grand Hotel | Onlayn bron</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+    <header class="header">
+        <a href="#home" class="logo">GRAND HOTEL</a>
+
+        <nav class="navigation">
+            <a href="#home">Bosh sahifa</a>
+            <a href="#rooms">Xonalar</a>
+            <a href="#about">Biz haqimizda</a>
+            <a href="#contact">Aloqa</a>
+        </nav>
+
+        <a href="#booking" class="header-button">Bron qilish</a>
+    </header>
+
+    <main>
+
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <p class="subtitle">SIZ UCHUN QULAY DAM OLISH</p>
+
+                <h1>O'zingizga mos xonani tanlang</h1>
+
+                <p>
+                    Qulaylik, sifat va unutilmas taassurotlar.
+                    Mehmonxonamizdan o'zingizga mos xonani toping.
+                </p>
+
+                <a href="#rooms" class="button">
+                    Xonalarni ko'rish
+                </a>
+            </div>
+        </section>
+
+        <section id="rooms" class="section">
+            <div class="section-heading">
+                <p class="subtitle">BIZNING TAKLIFLARIMIZ</p>
+                <h2>Mehmonxona xonalari</h2>
+                <p>O'zingizga mos xona va qulayliklarni tanlang.</p>
+            </div>
+
+            <div class="room-list">
+
+                <article class="room-card">
+                    <div class="room-image standard-image">
+                        <span>STANDART</span>
+                    </div>
+
+                    <div class="room-content">
+                        <h3>Standart xona</h3>
+                        <p>Qulay va shinam xona, bir yoki ikki mehmon uchun.</p>
+
+                        <div class="room-bottom">
+                            <p class="price">
+                                350 000 <span>so'm / kecha</span>
+                            </p>
+
+                            <a href="#booking" class="button">
+                                Tanlash
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="room-card">
+                    <div class="room-image deluxe-image">
+                        <span>DELUXE</span>
+                    </div>
+
+                    <div class="room-content">
+                        <h3>Deluxe xona</h3>
+                        <p>Keng xona va zamonaviy qulayliklar.</p>
+
+                        <div class="room-bottom">
+                            <p class="price">
+                                550 000 <span>so'm / kecha</span>
+                            </p>
+
+                            <a href="#booking" class="button">
+                                Tanlash
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="room-card">
+                    <div class="room-image suite-image">
+                        <span>SUITE</span>
+                    </div>
+
+                    <div class="room-content">
+                        <h3>Lyuks xona</h3>
+                        <p>Maxsus qulaylik va keng dam olish maydoni.</p>
+
+                        <div class="room-bottom">
+                            <p class="price">
+                                750 000 <span>so'm / kecha</span>
+                            </p>
+
+                            <a href="#booking" class="button">
+                                Tanlash
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <section id="booking" class="section booking-section">
+            <div class="section-heading">
+                <p class="subtitle">ONLAYN XIZMAT</p>
+                <h2>Xonani bron qilish</h2>
+                <p>Ma'lumotlaringizni kiriting va so'rov yuboring.</p>
+            </div>
+
+            <form id="bookingForm" class="booking-form">
+
+                <label for="name">Ism-familiya</label>
+                <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Ism-familiyangiz"
+                    required
+                    maxlength="100"
+                >
+
+                <label for="phone">Telefon raqami</label>
+                <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    placeholder="+998 90 123 45 67"
+                    required
+                >
+
+                <label for="room">Xona turi</label>
+                <select id="room" name="room" required>
+                    <option value="standard">Standart xona</option>
+                    <option value="deluxe">Deluxe xona</option>
+                    <option value="suite">Lyuks xona</option>
+                </select>
+
+                <div class="date-fields">
+                    <div>
+                        <label for="checkin">Kelish sanasi</label>
+                        <input
+                            type="date"
+                            id="checkin"
+                            name="checkin"
+                            required
+                        >
+                    </div>
+
+                    <div>
+                        <label for="checkout">Ketish sanasi</label>
+                        <input
+                            type="date"
+                            id="checkout"
+                            name="checkout"
+                            required
+                        >
+                    </div>
+                </div>
+
+                <label for="guests">Mehmonlar soni</label>
+                <input
+                    type="number"
+                    id="guests"
+                    name="guests"
+                    min="1"
+                    max="10"
+                    value="1"
+                    required
+                >
+
+                <button type="submit" class="button submit-button">
+                    Bron qilish uchun so'rov yuborish
+                </button>
+
+                <p id="formMessage" role="status" aria-live="polite"></p>
+
+            </form>
+        </section>
+
+        <section id="about" class="section about-section">
+            <div>
+                <p class="subtitle">BIZ HAQIMIZDA</p>
+                <h2>Sizning qulayligingiz — bizning maqsadimiz</h2>
+            </div>
+
+            <p>
+                Grand Hotel loyihasi mehmonlarga qulay xonalarni tanlash
+                va bron qilish jarayonini soddalashtirish uchun yaratilgan.
+                Bizning maqsadimiz zamonaviy, qulay va tushunarli
+                onlayn xizmatni taqdim etishdir.
+            </p>
+        </section>
+
+        <section id="contact" class="section contact-section">
+            <div class="section-heading">
+                <h2>Biz bilan bog'laning</h2>
+                <p>Savollaringiz bo'lsa, biz bilan aloqa qiling.</p>
+            </div>
+
+            <p>Manzil: Samarqand shahri Urgut tumani</p>
+            <p>Telefon: +998 99 837 01 40</p>
+            <p>Email: Azizbeyk06@gmail.com</p>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <p>© 2026 Grand Hotel. O'quv loyihasi.</p>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
