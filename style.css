@@ -242,7 +242,7 @@ a {
 
 .booking-form input:focus,
 .booking-form select:focus {
-    outline: 2px solid #547c68;
+    outline: 2px solid #b7fcda;
     outline-offset: 1px;
 }
 
