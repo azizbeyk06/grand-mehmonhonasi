@@ -270,6 +270,14 @@ a {
     overflow-wrap: anywhere;
 }
 
+.section-heading h2 {
+    color: #87bd2f;
+}
+
+.section-heading p {
+    color: #87bd2f;
+}
+
 .about-section {
     display: grid;
     grid-template-columns: 1fr 1fr;
