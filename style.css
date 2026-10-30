@@ -277,6 +277,10 @@ a {
     gap: 45px;
 }
 
+.about-section h2 {
+    color: #251d0f; 
+}
+
 .about-section > p {
     color: #000000;
 }
