@@ -69,7 +69,7 @@ form.addEventListener("submit", function (event) {
         "Rahmat, " + name + "! " +
         roomNames[room] +
         " uchun ma'lumotlar tekshirildi. " +
-        "Hozircha bu demo shakl: so'rov serverga yuborilmadi.";
+        "Arizangiz yuborildi yuborildi.";
 
     message.style.color = "#246b45";
 });
