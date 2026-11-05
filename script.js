@@ -4,14 +4,19 @@ const message = document.getElementById("formMessage");
 const checkin = document.getElementById("checkin");
 const checkout = document.getElementById("checkout");
 const room = document.getElementById("room");
+const guests = document.getElementById("guests");
 const totalPrice = document.getElementById("totalPrice");
 
+
+// Xona narxlari
 const roomPrices = {
     standard: 350000,
     deluxe: 550000,
     suite: 750000
 };
 
+
+// Bugungi sana
 function getToday() {
     const date = new Date();
 
@@ -28,27 +33,57 @@ checkin.min = today;
 checkout.min = today;
 
 
-// Umumiy summani hisoblash
+// Sanani to'g'ri hisoblash
+function getDateWithoutTimezone(dateString) {
+    const parts = dateString.split("-");
+
+    return new Date(
+        Number(parts[0]),
+        Number(parts[1]) - 1,
+        Number(parts[2])
+    );
+}
+
+
+// UMUMIY SUMMANI HISOBLASH
 function calculateTotal() {
+
+    // Sana tanlanmagan bo'lsa
     if (!checkin.value || !checkout.value) {
         totalPrice.textContent = "Umumiy summa: 0 so'm";
         return;
     }
 
-    const start = new Date(checkin.value);
-    const end = new Date(checkout.value);
 
-    const timeDifference = end - start;
-    const nights = timeDifference / (1000 * 60 * 60 * 24);
+    // Sanalarni olish
+    const startDate = getDateWithoutTimezone(checkin.value);
+    const endDate = getDateWithoutTimezone(checkout.value);
 
+
+    // Necha kecha
+    const difference =
+        endDate.getTime() - startDate.getTime();
+
+    const nights =
+        Math.round(difference / (1000 * 60 * 60 * 24));
+
+
+    // Noto'g'ri sana
     if (nights <= 0) {
         totalPrice.textContent = "Umumiy summa: 0 so'm";
         return;
     }
 
-    const price = roomPrices[room.value];
-    const total = price * nights;
 
+    // Tanlangan xona narxi
+    const pricePerNight = roomPrices[room.value];
+
+
+    // Umumiy summa
+    const total = pricePerNight * nights;
+
+
+    // Ekranga chiqarish
     totalPrice.textContent =
         "Umumiy summa: " +
         total.toLocaleString("uz-UZ") +
@@ -56,11 +91,21 @@ function calculateTotal() {
 }
 
 
-// Kelish sanasi
+// XONA O'ZGARGANDA
+room.addEventListener("change", function () {
+    calculateTotal();
+});
+
+
+// KELISH SANASI O'ZGARGANDA
 checkin.addEventListener("change", function () {
+
     checkout.min = checkin.value || today;
 
-    if (checkout.value && checkout.value <= checkin.value) {
+    if (
+        checkout.value &&
+        checkout.value <= checkin.value
+    ) {
         checkout.value = "";
     }
 
@@ -68,91 +113,75 @@ checkin.addEventListener("change", function () {
 });
 
 
-// Ketish sanasi
-checkout.addEventListener("change", calculateTotal);
+// KETISH SANASI O'ZGARGANDA
+checkout.addEventListener("change", function () {
+    calculateTotal();
+});
 
 
-// Xona turi
-room.addEventListener("change", calculateTotal);
+// Mehmonlar soni o'zgarganda ham hisoblash
+guests.addEventListener("input", function () {
+    calculateTotal();
+});
 
 
-// Bron qilish
+// BRON QILISH
 form.addEventListener("submit", function (event) {
+
     event.preventDefault();
 
-    const name = document.getElementById("name").value.trim();
-    const phone = document.getElementById("phone").value.trim();
-    const guests = Number(document.getElementById("guests").value);
+    const name =
+        document.getElementById("name").value.trim();
+
+    const phone =
+        document.getElementById("phone").value.trim();
+
+    const guestNumber =
+        Number(guests.value);
+
 
     if (!name || !phone) {
         message.textContent =
             "Iltimos, ism va telefon raqamini kiriting.";
+
         return;
     }
 
-    if (!checkin.value || !checkout.value ||
-        checkout.value <= checkin.value) {
+
+    if (
+        !checkin.value ||
+        !checkout.value ||
+        checkout.value <= checkin.value
+    ) {
         message.textContent =
             "Kelish va ketish sanalarini to'g'ri tanlang.";
+
         return;
     }
 
-    if (!Number.isInteger(guests) || guests < 1 || guests > 10) {
+
+    if (
+        !Number.isInteger(guestNumber) ||
+        guestNumber < 1 ||
+        guestNumber > 10
+    ) {
         message.textContent =
             "Mehmonlar soni 1 dan 10 gacha bo'lishi kerak.";
+
         return;
     }
 
+
     calculateTotal();
+
 
     message.style.color = "#246b45";
 
     message.textContent =
-        "Rahmat, " + name + "! Arizangiz yuborildi.";
+        "Rahmat, " + name +
+        "! Arizangiz yuborildi.";
 });
 
 
-// Sayt ochilganda
+// Sayt ochilganda hisoblash
 calculateTotal();
-
-// Umumiy summani hisoblash
-function calculateTotalPrice() {
-    const roomPrices = {
-        standard: 350000,
-        deluxe: 550000,
-        suite: 750000
-    };
-
-    const roomPrice = roomPrices[room.value];
-
-    if (!checkin.value || !checkout.value) {
-        document.getElementById("totalPrice").textContent =
-            "Umumiy summa: 0 so'm";
-        return;
-    }
-
-    const start = new Date(checkin.value);
-    const end = new Date(checkout.value);
-
-    const nights = Math.round(
-        (end - start) / (1000 * 60 * 60 * 24)
-    );
-
-    if (nights <= 0) {
-        document.getElementById("totalPrice").textContent =
-            "Umumiy summa: 0 so'm";
-        return;
-    }
-
-    const total = roomPrice * nights;
-
-    document.getElementById("totalPrice").textContent =
-        "Umumiy summa: " +
-        total.toLocaleString("uz-UZ") +
-        " so'm";
-}
-
-// O'zgarishlarni kuzatish
-room.addEventListener("change", calculateTotalPrice);
-checkin.addEventListener("change", calculateTotalPrice);
-checkout.addEventListener("change", calculateTotalPrice);
