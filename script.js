@@ -114,3 +114,45 @@ form.addEventListener("submit", function (event) {
 
 // Sayt ochilganda
 calculateTotal();
+
+// Umumiy summani hisoblash
+function calculateTotalPrice() {
+    const roomPrices = {
+        standard: 350000,
+        deluxe: 550000,
+        suite: 750000
+    };
+
+    const roomPrice = roomPrices[room.value];
+
+    if (!checkin.value || !checkout.value) {
+        document.getElementById("totalPrice").textContent =
+            "Umumiy summa: 0 so'm";
+        return;
+    }
+
+    const start = new Date(checkin.value);
+    const end = new Date(checkout.value);
+
+    const nights = Math.round(
+        (end - start) / (1000 * 60 * 60 * 24)
+    );
+
+    if (nights <= 0) {
+        document.getElementById("totalPrice").textContent =
+            "Umumiy summa: 0 so'm";
+        return;
+    }
+
+    const total = roomPrice * nights;
+
+    document.getElementById("totalPrice").textContent =
+        "Umumiy summa: " +
+        total.toLocaleString("uz-UZ") +
+        " so'm";
+}
+
+// O'zgarishlarni kuzatish
+room.addEventListener("change", calculateTotalPrice);
+checkin.addEventListener("change", calculateTotalPrice);
+checkout.addEventListener("change", calculateTotalPrice);
