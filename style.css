@@ -394,3 +394,31 @@ a {
 #bron .btn-success:hover {
     background-color: #21612b;
 }
+
+.footer {
+    background-color: #163b32;
+    color: white;
+    padding: 50px 0 25px;
+}
+
+.footer h3,
+.footer h5 {
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.footer a {
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.footer a:hover {
+    color: #ffc107;
+}
+
+.footer hr {
+    border-color: rgba(255,255,255,0.4);
+    margin: 30px 0 20px;
+}
