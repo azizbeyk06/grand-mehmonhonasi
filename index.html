@@ -325,152 +325,97 @@
 </section>            
 
 
+
 <section id="bron" class="py-5 bg-light">
+  <div class="container">
 
-    <div class="container">
+    <h2 class="text-center fw-bold mb-2">
+      Xonani bron qilish
+    </h2>
 
-        <div class="text-center mb-4">
+    <p class="text-center text-muted mb-5">
+      Ma’lumotlaringizni kiriting va xonani band qiling
+    </p>
 
-            <h2 class="fw-bold">
-                Xona bron qilish
-            </h2>
+    <div class="row justify-content-center">
+      <div class="col-12 col-lg-8">
 
-            <p class="text-muted">
-                Bron qilish uchun ma'lumotlaringizni kiriting
-            </p>
+        <div class="card shadow p-4 p-md-5">
+          <form id="bookingForm">
 
-        </div>
+            <div class="row g-3">
 
-        <div class="row justify-content-center">
+              <div class="col-12 col-md-6">
+                <label class="form-label">Ism va familiya</label>
+                <input type="text" name="name"
+                  class="form-control"
+                  placeholder="Ismingizni kiriting" required>
+              </div>
 
-            <div class="col-12 col-md-10 col-lg-8">
+              <div class="col-12 col-md-6">
+                <label class="form-label">Telefon raqam</label>
+                <input type="tel" name="phone"
+                  class="form-control"
+                  placeholder="+998 XX XXX XX XX" required>
+              </div>
 
-                <div class="card shadow">
+              <div class="col-12">
+                <label class="form-label">Xona turi</label>
+                <select name="room" class="form-select" required>
+                  <option value="">Xonani tanlang</option>
+                  <option value="standard">Standart — 350 000 so‘m</option>
+                  <option value="deluxe">Deluxe — 550 000 so‘m</option>
+                  <option value="suite">Lyuks — 750 000 so‘m</option>
+                </select>
+              </div>
 
-                    <div class="card-body p-4">
+              <div class="col-12 col-md-6">
+                <label class="form-label">Kelish sanasi</label>
+                <input type="date" name="checkin"
+                  class="form-control" required>
+              </div>
 
-                        <form>
+              <div class="col-12 col-md-6">
+                <label class="form-label">Ketish sanasi</label>
+                <input type="date" name="checkout"
+                  class="form-control" required>
+              </div>
 
-                            <div class="mb-3">
+              <div class="col-12">
+                <label class="form-label">Mehmonlar soni</label>
+                <select name="guests" class="form-select" required>
+                  <option value="">Mehmonlar sonini tanlang</option>
+                  <option value="1">1 kishi</option>
+                  <option value="2">2 kishi</option>
+                  <option value="3">3 kishi</option>
+                  <option value="4">4 kishi</option>
+                  <option value="5">5 kishi</option>
+                  <option value="6">6 kishi</option>
+                  <option value="7">7 kishi</option>
+                  <option value="8">8 kishi</option>
+                  <option value="9">9 kishi</option>
+                  <option value="10">10 kishi</option>
+                </select>
+              </div>
 
-                                <label class="form-label">
-                                    Ism va familiya
-                                </label>
+              <div class="col-12">
+                <button type="submit"
+                  class="btn btn-success btn-lg w-100 mt-3">
+                  Bron qilish
+                </button>
+              </div>
 
-                                <input 
-                                    type="text"
-                                    class="form-control"
-                                    placeholder="Ismingizni kiriting">
-
-                            </div>
-
-
-                            <div class="mb-3">
-
-                                <label class="form-label">
-                                    Telefon raqam
-                                </label>
-
-                                <input 
-                                    type="tel"
-                                    class="form-control"
-                                    placeholder="+998 90 123 45 67">
-
-                            </div>
-
-
-                            <div class="mb-3">
-
-                                <label class="form-label">
-                                    Xona turi
-                                </label>
-
-                                <select class="form-select">
-
-                                    <option>
-                                        Standart - 350 000 so‘m
-                                    </option>
-
-                                    <option>
-                                        Deluxe - 550 000 so‘m
-                                    </option>
-
-                                    <option>
-                                        Lyuks - 750 000 so‘m
-                                    </option>
-
-                                </select>
-
-                            </div>
-
-
-                            <div class="row">
-
-                                <div class="col-12 col-md-6 mb-3">
-
-                                    <label class="form-label">
-                                        Kelish sanasi
-                                    </label>
-
-                                    <input 
-                                        type="date"
-                                        class="form-control">
-
-                                </div>
-
-
-                                <div class="col-12 col-md-6 mb-3">
-
-                                    <label class="form-label">
-                                        Ketish sanasi
-                                    </label>
-
-                                    <input 
-                                        type="date"
-                                        class="form-control">
-
-                                </div>
-
-                            </div>
-
-
-                            <div class="mb-3">
-
-                                <label class="form-label">
-                                    Mehmonlar soni
-                                </label>
-
-                                <select class="form-select">
-
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-
-                                </select>
-
-                            </div>
-
-
-                            <button 
-                                type="submit"
-                                class="btn btn-success w-100">
-
-                                Bron qilish
-
-                            </button>
-
-                        </form>
-
-                    </div>
-
-                </div>
+              <div class="col-12">
+                <p id="formMessage" class="text-center mb-0"
+                  role="status" aria-live="polite"></p>
+              </div>
 
             </div>
-
+          </form>
         </div>
 
+      </div>
     </div>
-
+  </div>
 </section>
+
