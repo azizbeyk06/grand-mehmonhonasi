@@ -364,3 +364,33 @@ a {
         padding: 20px;
     }
 }
+
+#bron {
+    background-color: #f5f6fa;
+}
+
+#bron .card {
+    border: none;
+    border-radius: 15px;
+}
+
+#bron h2 {
+    color: #163b32;
+}
+
+#bron .form-control,
+#bron .form-select {
+    padding: 12px;
+    border-radius: 8px;
+}
+
+#bron .btn-success {
+    background-color: #163b32;
+    border: none;
+    padding: 14px;
+    font-weight: bold;
+}
+
+#bron .btn-success:hover {
+    background-color: #21612b;
+}
